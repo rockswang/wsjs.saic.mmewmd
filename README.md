@@ -56,7 +56,8 @@ input SaicArgs {
   page: Int
   # 从/txnRead02.ajax返回的xml中提取，第一页不需要
   tlong: String
-}```
+}
+```
 
 # 声明
 * 暂时不支持详情页
