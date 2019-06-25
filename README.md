@@ -12,7 +12,7 @@
 
 # 关于DEMO
 * 调用方法
-  `node gql_demo.js --nc=34 --mn=鸿蒙 --nc=9`
+  `node gql_demo.js --mn=鸿蒙 --nc=9`
 
 # 工作流程
 1. 客户端不带任何cookie请求中国商标网首页，目的是获取F80S cookie值
