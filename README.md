@@ -1,11 +1,12 @@
 # 中国商标网加密接口
-* 解析网页中的`&lt;meta id="9DhefwqGPrzGxEp9hPaoag">`，生成`FSSBBIl1UgzbN7N80T`, `MmEwMD`, `y7bRbp`, `c1K5tw0w6_`等加密信息。
+* 解析网页中的`<meta id="9DhefwqGPrzGxEp9hPaoag">`，生成`FSSBBIl1UgzbN7N80T`, `MmEwMD`, `y7bRbp`, `c1K5tw0w6_`等加密信息。
 * 提供GraphQL API，方便客户端以灵活的顺序调用
 * 本接口并不直接访问中国商标网，而是仅用于为客户端生成加密后请求参数
 * 本仓库仅包括一个简单的命令行例程，用于演示接口调用方法
 
 # 接口地址
   http://39.100.136.50/saic/
+  
   注意：
   * 仅支持POST，请求体为application/json格式
   * 需要添加token请求头，内容为首次请求首页获得的FSSBBIl1UgzbN7N80S cookie值
