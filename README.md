@@ -1,5 +1,5 @@
 # 中国商标网加密接口
-* 解析网页中的&lt;meta id="9DhefwqGPrzGxEp9hPaoag">，生成FSSBBIl1UgzbN7N80T, MmEwMD, y7bRbp, c1K5tw0w6_等加密信息。
+* 解析网页中的`&lt;meta id="9DhefwqGPrzGxEp9hPaoag">`，生成`FSSBBIl1UgzbN7N80T`, `MmEwMD`, `y7bRbp`, `c1K5tw0w6_`等加密信息。
 * 提供GraphQL API，方便客户端以灵活的顺序调用
 * 本接口并不直接访问中国商标网，而是仅用于为客户端生成加密后请求参数
 * 本仓库仅包括一个简单的命令行例程，用于演示接口调用方法
@@ -9,6 +9,10 @@
   注意：
   * 仅支持POST，请求体为application/json格式
   * 需要添加token请求头，内容为首次请求首页获得的FSSBBIl1UgzbN7N80S cookie值
+
+# 关于DEMO
+* 调用方法
+  `node gql_demo.js --nc=34 --mn=鸿蒙 --nc=9`
 
 # 工作流程
 1. 客户端不带任何cookie请求中国商标网首页，目的是获取F80S cookie值
@@ -28,9 +32,13 @@ type Query {
 # 根变更，使用Mutation而不用Query因为以下调用必须依次执行
 type Mutation {
   # 客户端请求完文档后，使用此调用上传html内容；返回初次运行生成的F80T cookie值
+  # url - 页面地址。仅用来区分页面地址，此脚本并不发起请求
   uploadHtml(url: String!, html: String!, initCookieValue: String): String
   # 模拟一次导致cookie更新的浏览器事件，返回更新后的cookie值；
-  # type - 导致cookie最后一次更新的动作类型：2 - 202 reload, 3 - 点击, 7 - 表单提交
+  # type - 导致cookie最后一次更新的动作类型：3 - 点击（默认值）, 7 - 表单提交
+  # keyPressCount - 按键计数，对于提交事件，需要按照实际情况提供
+  # mouseDownCount - 鼠标点击计数，对于点击事件，默认值为大于1的随机整数
+  # sleep - 延迟给定毫秒数之后再模拟事件
   fakeEvent(type: Int, keyPressCount: Int, mouseDownCount: Int, sleep: Int): String
   # 根据给定的url或uri，以及查询参数，生成完整请求信息
   prepareRequest(url: String!, args: SaicArgs): RequestOption
