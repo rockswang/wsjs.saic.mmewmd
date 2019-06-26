@@ -1,10 +1,10 @@
 # 中国商标网加密接口
 
 # 参考
-* [瑞数分析第一篇](https://segmentfault.com/a/1190000017286304)
-* [瑞数分析第二篇](https://segmentfault.com/a/1190000017541235)
-* [瑞数加密原理简析](https://segmentfault.com/a/1190000018311861)
-* [Javascript逆向技术QQ群](https://jq.qq.com/?_wv=1027&k=5Bcu3YU)
+* [瑞数分析第一篇](https://segmentfault.com/a/1190000017286304) - 记录了一些早期的摸索和分析
+* [瑞数分析第二篇](https://segmentfault.com/a/1190000017541235) - 深入一些的分析和总结
+* [瑞数加密原理简析](https://segmentfault.com/a/1190000018311861) - 原理流程整理
+* [Javascript逆向技术QQ群](https://jq.qq.com/?_wv=1027&k=5Bcu3YU) - 可联系作者本人
 
 # 概述
 [中国商标网](http://wsjs.saic.gov.cn)使用了国内安全公司[瑞数信息](https://www.riversecurity.com.cn)的Botgate前端加密技术。以下为官网介绍：
