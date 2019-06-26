@@ -1,7 +1,8 @@
 const cheerio = require("cheerio")
 const rp = require("request-promise")
 
-const debug = true
+const debug = !!process.env.DEBUG || false
+
 let fs, tmpDir
 if (debug) {
     fs = require("fs")
@@ -78,8 +79,10 @@ async function query(args) {
             if (resp.body.length === 0) throw new Error()
         } catch (err) { // 清除cookie, 重新开始
             await new Promise(done => setTimeout(done, 200))
-            ;[url, f80t] = [BASE + "/txnT01.do"]
-            jar._jar.store.removeCookie(HOST, "/", "FSSBBIl1UgzbN7N80S", () => {})
+            if (url.indexOf("/txnRead01.do") > 0) { // 列表页出错，重新开始整体流程
+                [url, f80t] = [BASE + "/txnT01.do"]
+                jar._jar.store.removeCookie(HOST, "/", "FSSBBIl1UgzbN7N80S", () => {})
+            }
             continue
         }
         if (debug) fs.writeFileSync(`${tmpDir}/${step}.html`, resp.body)
